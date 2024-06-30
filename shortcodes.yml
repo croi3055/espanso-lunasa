@@ -1,0 +1,111 @@
+# \n换行，$|$为光标位置，|是多行输入
+
+matches:
+#删除线
+- trigger: "/del"
+  replace: "<del>$|$</del>"
+  label: "删除线"
+
+#图片位置
+- trigger: "/picl"
+  replace: '![alt <](url$|$ "title")' 
+  label: "图片居左"
+
+- trigger: "/picm"
+  replace: '![alt ><](url$|$ "title")' 
+  label: "图片居中" 
+
+
+- trigger: "/picr"
+  replace: '![alt >](url$|$ "title")' 
+  label: "图片居右" 
+
+#卡片
+- trigger: "/card"
+  replace: "{{< card >}}\n$|$\n{{< /card >}}" 
+  label: "卡片样式"
+
+#按键样式
+- trigger: "/kbd"
+  replace: "<kbd>$|$</kbd>"
+  label: "按键样式"
+
+#文字模糊
+- trigger: "/mohu"
+  replace: '<span class="blur">$|$</span>'
+  label: "文字模糊"
+
+#文字黑幕
+- trigger: "/heimu"
+  replace: '<span class="shady">$|$</span>'
+  label: "文字黑幕"
+
+#文本高亮
+- trigger: "/mark"
+  replace: '{{< mark text="$|$" >}}'
+  label: "文本高亮"
+
+#图片轮播
+- trigger: "/lunbo"
+  replace: '{{< imgloop "1,2$|$" >}}'
+  label: "图片轮播"
+
+#单张图片灯箱
+- trigger: "/fancy"
+  replace: '<img class="img" data-fancybox src="$|$" width="100%" alt="" />'
+  label: "fancybox单张"
+
+#多图灯箱
+- trigger: "/gallery"
+  replace: |
+    <div class="fancybox">
+    
+    <a data-fancybox="gallery" data-src="url1"><img src="url1" width="200" alt="图片说明" /></a>
+    
+    <a data-fancybox="gallery" data-src="url2"><img src="url2" width="200" alt="图片说明" /></a>
+    
+    <a data-fancybox="gallery" data-src="url3"><img src="url3" width="200" alt="图片说明" /></a>
+    
+    </div>
+  label: "fancybox多图"
+
+#neodb卡片
+- trigger: "/neodb"
+  replace: '{{< neodb "url$|$" 7 >}}'
+  label: "neodb卡片"
+
+#星星评分
+- trigger: "/rate"
+  replace: "{{< rating 10 7 >}}"
+  label: "星星评分"
+
+#spotify
+- trigger: "/spotify"
+  replace: '{{< spotify type="track" id="[？前的乱码]$|$" height="80px">}}'
+  label: "spotify"
+
+#文字折叠
+- trigger: "/toggle"
+  replace: '{{< detail "[展开]" >}}\n$|$\n{{< /detail >}}'
+  label: "文字折叠"
+
+#居中引用
+- trigger: "/jzyy"
+  replace: "{{< quote-center >}}$|$<br>{{< /quote-center >}}"
+  label: "居中引用"
+
+#聊天气泡
+- trigger: "/chat"
+  replace: |
+    {{< chat title="名字" time="01/01 22:22" image="头像地址">}}
+    
+    {{< chatbubble side="left" >}}
+    左边讲话
+    {{< /chatbubble >}}
+    
+    {{< chatbubble side="right" >}}
+    右边讲话
+    {{< /chatbubble >}}
+    
+    {{< /chat >}}
+  label: "聊天记录"
